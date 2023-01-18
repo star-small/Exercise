@@ -11,3 +11,9 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return f"{self.first_name} - {self.token}"
+
+
+class Message(models.Model):
+    message = models.TextField()
+    user = models.ForeignKey(
+        CustomUser, related_name="messages", on_delete=models.CASCADE)
