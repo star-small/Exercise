@@ -15,7 +15,7 @@ class MessageView(APIView):
         return Response(serializer.data)
 
     def post(self, requests, format=None):
-        serializer = UserSerializer(data=requests.data)
-        serializer.get_fields()
-        print(requests.data["mess"])
+        user = CustomUser.objects.get(token=requests.data['token'])
+        serializer = UserSerializer(user)
+        print(serializer.data)
         return Response({"wrefer": "wfwef"})
