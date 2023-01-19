@@ -1,0 +1,20 @@
+import telebot
+import requests
+
+bot = telebot.TeleBot('5855640404:AAFcIc16j9nPjP_j9Df1jJH96e__kHIekBk')
+API_URL = "http://127.0.0.1:8000/api/user/"
+query = {
+    "token": "e1be827d-c4b5-4502-af98-e5ca2dfafc4b",
+    "message": "myMessage"
+}
+
+
+@bot.message_handler(content_types=['text'])
+def get_messages(message):
+    print(message.text)
+
+
+response = requests.post(API_URL, params=query)
+print(response.json())
+
+bot.polling(none_stop=True, interval=0)

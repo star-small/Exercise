@@ -9,11 +9,13 @@ class CustomAdmin(UserAdmin):
     list_display = (
         "username", "first_name", "token"
     )
+
     fieldsets = (
-        ("reg", {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'token')})
+        ("reg", {'fields': ('username',  'password')}),
+        ('Personal info', {'fields': ('first_name', 'token', "chat_id")})
     )
-    readonly_fields = (['token'])
+
+    readonly_fields = (['token', 'chat_id'])
 
 
 admin.site.register(CustomUser, CustomAdmin)
